@@ -7,7 +7,6 @@ const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
    var firebaseConfig = {
-      // The value of `databaseURL` depends on the location of the database
       databaseURL:
          "https://hhquiz-4ef5c-default-rtdb.asia-southeast1.firebasedatabase.app",
    };

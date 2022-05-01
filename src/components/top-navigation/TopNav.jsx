@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import "./top-nav.css";
-//import { useAuth } from "../../context/auth-context";
 
 const TopNav = () => {
    return (
