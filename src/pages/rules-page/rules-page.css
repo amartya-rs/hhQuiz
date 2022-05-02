@@ -1,0 +1,18 @@
+.rules-page {
+   padding: 0 4rem;
+
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+
+.rules-page li {
+   list-style-type: disc;
+}
+
+.rules-page .button {
+   width: 12rem;
+   height: 3rem;
+}
