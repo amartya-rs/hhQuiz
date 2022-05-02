@@ -1,10 +1,21 @@
 import { quiz_banner } from "../../assets/images/index";
 import { CategoryCard } from "../../components";
 import { useData } from "../../context/data-context";
+import { useNavigate } from "react-router-dom";
 import "./home-page.css";
 
 const HomePage = () => {
-   const { state } = useData();
+   const {
+      state: { quizCategories },
+      dispatch,
+   } = useData();
+   const navigate = useNavigate();
+
+   const redirect = (value) => {
+      dispatch({ type: "SET_CURRENT_CATEGORY", payload: value });
+      localStorage.setItem("currentCategory", value);
+      navigate("/rules");
+   };
 
    return (
       <div className="home-page">
@@ -25,12 +36,13 @@ const HomePage = () => {
          <section id="categories" className="category-section">
             <h4>Category</h4>
             <div className="categories">
-               {state.quizCategories &&
-                  state.quizCategories.map((ele, index) => (
+               {quizCategories &&
+                  quizCategories.map((ele, index) => (
                      <CategoryCard
                         key={index}
                         img={ele.url}
                         category={ele.category}
+                        redirect={() => redirect(ele.category)}
                      />
                   ))}
             </div>
