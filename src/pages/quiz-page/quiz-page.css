@@ -1,0 +1,43 @@
+.quiz-page {
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: 5rem 1fr 5rem;
+   place-items: center;
+}
+
+.quiz-details {
+   width: 55%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.quiz-options {
+   margin-top: 4rem;
+
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: center;
+   gap: 1rem;
+}
+
+.quiz-options .button {
+   width: 16rem;
+   height: 4rem;
+   font-size: large;
+   font-weight: 600;
+}
+
+.selected {
+   background-color: var(--PRIMARY-COLOR);
+   color: var(--WHITE);
+}
+
+.quiz-page .navigate-question {
+   width: 52%;
+
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
