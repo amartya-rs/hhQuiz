@@ -46,7 +46,7 @@ const DataProvider = ({ children }) => {
                ...state,
                quizCategories: payload,
             };
-         case "SET_QUESTION_NO":
+         case "SET_CURRENT_QUESTION_ID":
             return {
                ...state,
                currentQuestionId: payload,

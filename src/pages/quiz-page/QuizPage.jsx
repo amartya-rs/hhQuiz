@@ -23,11 +23,17 @@ export const QuizPage = () => {
    const questionID = quizData && Object.keys(quizData?.[currentCategory]);
 
    const nextQuestion = () => {
-      dispatch({ type: "SET_QUESTION_NO", payload: currentQuestionId + 1 });
+      dispatch({
+         type: "SET_CURRENT_QUESTION_ID",
+         payload: currentQuestionId + 1,
+      });
    };
 
    const previousQuestion = () => {
-      dispatch({ type: "SET_QUESTION_NO", payload: currentQuestionId - 1 });
+      dispatch({
+         type: "SET_CURRENT_QUESTION_ID",
+         payload: currentQuestionId - 1,
+      });
    };
 
    const setUserAnswer = (ele) => {
