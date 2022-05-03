@@ -46,6 +46,21 @@ const DataProvider = ({ children }) => {
                ...state,
                quizCategories: payload,
             };
+         case "SET_CURRENT_QUESTION_ID":
+            return {
+               ...state,
+               currentQuestionId: payload,
+            };
+         case "SET_CURRENT_CATEGORY":
+            return {
+               ...state,
+               currentCategory: payload,
+            };
+         case "SET_USER_ANSWER":
+            return {
+               ...state,
+               userAnswer: [...state.userAnswer, payload],
+            };
          default:
             return state;
       }
@@ -54,6 +69,9 @@ const DataProvider = ({ children }) => {
    const initialState = {
       quizData: "",
       quizCategories: "",
+      currentQuestionId: 0,
+      currentCategory: "",
+      userAnswer: [],
    };
 
    const [state, dispatch] = useReducer(dataReducer, initialState);
