@@ -61,6 +61,12 @@ const DataProvider = ({ children }) => {
                ...state,
                userAnswer: [...state.userAnswer, payload],
             };
+         case "RESET_QUIZ":
+            return {
+               ...state,
+               userAnswer: [],
+               currentQuestionId: 0,
+            };
          default:
             return state;
       }
