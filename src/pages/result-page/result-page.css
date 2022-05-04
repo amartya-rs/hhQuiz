@@ -1,0 +1,21 @@
+.result-page {
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: 8rem 1fr;
+   place-items: center;
+}
+
+.result-page .outline-primary:hover {
+   background-color: var(--WHITE);
+   color: var(--PRIMARY-COLOR);
+}
+
+.result-page .correct-option {
+   background-color: var(--SUCCESS-COLOR);
+   color: var(--PRIMARY-COLOR);
+}
+
+.result-page .quiz-details {
+   margin-top: 2rem;
+   margin-bottom: 1rem;
+}
