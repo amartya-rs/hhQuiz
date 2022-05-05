@@ -2,6 +2,7 @@
    grid-area: page;
    padding: 0 2rem;
 }
+
 .home-page header {
    height: 25rem;
 
@@ -34,7 +35,9 @@
 .home-page .categories {
    margin-top: 2rem;
    margin-bottom: 5rem;
+
    display: flex;
    flex-wrap: wrap;
+   justify-content: space-evenly;
    gap: 1rem;
 }

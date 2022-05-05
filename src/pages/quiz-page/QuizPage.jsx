@@ -68,12 +68,12 @@ export const QuizPage = () => {
    };
 
    return (
-      <>
+      <main className="quiz-page">
          {quizData === "" ? (
             <div className="h2">Loading...</div>
          ) : (
-            <main className="quiz-page">
-               <section>
+            <>
+               <section className="quiz-heading">
                   <h5 className="font-medium">
                      {`Question no: ${
                         quizData?.[currentCategory]?.[
@@ -81,6 +81,12 @@ export const QuizPage = () => {
                         ]?.qNo
                      }/5`}
                   </h5>
+                  <button
+                     className="button-link h6"
+                     onClick={() => navigate("/")}
+                  >
+                     Quit quiz
+                  </button>
                </section>
                <section className="quiz-details">
                   <h5>
@@ -127,7 +133,10 @@ export const QuizPage = () => {
                   )}
                   {quizData?.[currentCategory]?.[questionID[currentQuestionId]]
                      ?.qNo === 5 ? (
-                     <button className="button icon-only-button primary">
+                     <button
+                        onClick={() => navigate("/result")}
+                        className="button icon-only-button primary"
+                     >
                         RESULTS
                      </button>
                   ) : (
@@ -139,8 +148,8 @@ export const QuizPage = () => {
                      </button>
                   )}
                </section>
-            </main>
+            </>
          )}
-      </>
+      </main>
    );
 };

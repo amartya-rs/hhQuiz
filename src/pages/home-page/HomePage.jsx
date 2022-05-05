@@ -2,14 +2,21 @@ import { quiz_banner } from "../../assets/images/index";
 import { CategoryCard } from "../../components";
 import { useData } from "../../context/data-context";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import "./home-page.css";
 
 const HomePage = () => {
+   const navigate = useNavigate();
    const {
       state: { quizCategories },
       dispatch,
    } = useData();
-   const navigate = useNavigate();
+
+   //resetting quiz
+   useEffect(() => {
+      dispatch({ type: "RESET_QUIZ" });
+      // eslint-disable-next-line
+   }, []);
 
    const redirect = (value) => {
       dispatch({ type: "SET_CURRENT_CATEGORY", payload: value });
