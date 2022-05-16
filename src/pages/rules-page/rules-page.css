@@ -16,3 +16,11 @@
    width: 12rem;
    height: 3rem;
 }
+
+/*media query*/
+@media screen and (max-width: 750px) {
+   .rules-page h3 {
+      font-size: 2rem;
+      text-align: center;
+   }
+}
