@@ -1,6 +1,7 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { Footer, TopNav } from "./components";
+import { useTheme } from "./context/theme-context";
 import {
    HomePage,
    RulesPage,
@@ -10,8 +11,10 @@ import {
 } from "./pages/index";
 
 function App() {
+   const { theme } = useTheme();
+
    return (
-      <div className="App">
+      <div className={`App ${theme === "dark" ? "dark-theme" : ""}`}>
          <TopNav />
          <Routes>
             <Route path="/" element={<HomePage />} />

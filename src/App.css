@@ -9,3 +9,8 @@
       "page"
       "footer";
 }
+
+.dark-theme {
+   background-color: #212121;
+   color: var(--WHITE);
+}

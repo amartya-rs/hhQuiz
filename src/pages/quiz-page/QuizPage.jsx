@@ -2,6 +2,7 @@ import { useData } from "../../context/data-context";
 import { LeftArrow, RightArrow } from "../../assets/icons";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useTheme } from "../../context/theme-context";
 import "./quiz-page.css";
 
 export const QuizPage = () => {
@@ -10,6 +11,7 @@ export const QuizPage = () => {
       dispatch,
    } = useData();
    const navigate = useNavigate();
+   const { theme } = useTheme();
 
    //getting the user selected category from the local storage on page refresh and setting it
    useEffect(() => {
@@ -82,7 +84,9 @@ export const QuizPage = () => {
                      }/5`}
                   </h5>
                   <button
-                     className="button-link h6"
+                     className={`button-link h6 ${
+                        theme === "dark" ? "link-white" : ""
+                     }`}
                      onClick={() => navigate("/")}
                   >
                      Quit quiz
