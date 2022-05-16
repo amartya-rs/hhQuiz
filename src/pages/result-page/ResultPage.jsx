@@ -1,21 +1,10 @@
 import "./result-page.css";
 import { useData } from "../../context/data-context";
-import { useEffect } from "react";
 
 const ResultPage = () => {
    const {
       state: { quizData, currentCategory, userAnswer },
-      dispatch,
    } = useData();
-
-   //getting the user selected category from the local storage on page refresh and setting it
-   useEffect(() => {
-      dispatch({
-         type: "SET_CURRENT_CATEGORY",
-         payload: localStorage.getItem("currentCategory"),
-      });
-      // eslint-disable-next-line
-   }, []);
 
    const questionID = quizData && Object.keys(quizData?.[currentCategory]);
 
