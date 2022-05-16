@@ -2,8 +2,14 @@
    height: 4rem;
    grid-area: topnav;
    margin-bottom: 1rem;
+   box-shadow: none;
 }
 
 .brand {
    margin-right: 1rem;
+}
+
+.main-nav .feather {
+   cursor: pointer;
+   margin-right: 2rem;
 }

@@ -7,7 +7,9 @@ const RulesPage = () => {
    return (
       <div className="rules-page">
          <h2>Rules</h2>
-         <h3>Before starting please, read the rules carefully</h3>
+         <h3 className="mt-2">
+            Before starting please, read the rules carefully
+         </h3>
          <ul className="h5 font-semibold mt-4">
             <li>You will face 5 Questions</li>
             <li>
