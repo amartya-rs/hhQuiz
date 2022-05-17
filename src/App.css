@@ -14,3 +14,11 @@
    background-color: #212121;
    color: var(--WHITE);
 }
+
+.loader-wrapper {
+   min-height: 80vh;
+   min-width: 100%;
+
+   display: grid;
+   place-items: center;
+}
