@@ -49,6 +49,7 @@
    justify-content: space-between;
    align-items: center;
 }
+
 .link-white {
    color: var(--WHITE);
 }
@@ -59,6 +60,7 @@
       width: 80%;
       text-align: center;
    }
+
    .quiz-page .quiz-heading {
       width: 80%;
    }
