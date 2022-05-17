@@ -6,12 +6,22 @@ import { useEffect } from "react";
 const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
-   var firebaseConfig = {
+   const firebaseConfig = {
       databaseURL:
          "https://hhquiz-4ef5c-default-rtdb.asia-southeast1.firebasedatabase.app",
    };
 
+   // eslint-disable-next-line
    const app = initializeApp(firebaseConfig);
+
+   //getting the user selected category from the local storage on page refresh and setting it
+   useEffect(() => {
+      dispatch({
+         type: "SET_CURRENT_CATEGORY",
+         payload: localStorage.getItem("currentCategory"),
+      });
+      // eslint-disable-next-line
+   }, []);
 
    //fetching quiz data and categories from firebase realtime database
    useEffect(() => {
