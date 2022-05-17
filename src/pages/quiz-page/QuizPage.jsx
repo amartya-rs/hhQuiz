@@ -3,13 +3,11 @@ import { LeftArrow, RightArrow } from "../../assets/icons";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useTheme } from "../../context/theme-context";
-import { Loader } from "../../utils/Loader";
 import "./quiz-page.css";
 
 export const QuizPage = () => {
    const {
       state: { quizData, currentCategory, currentQuestionId, userAnswer },
-      loading,
       dispatch,
    } = useData();
    const navigate = useNavigate();
@@ -72,13 +70,11 @@ export const QuizPage = () => {
    };
 
    return (
-      <>
-         {loading ? (
-            <div className="loader-wrapper">
-               <Loader loading={loading} />
-            </div>
+      <main className="quiz-page">
+         {quizData === "" ? (
+            <div className="h2">Loading...</div>
          ) : (
-            <main className="quiz-page">
+            <>
                <section className="quiz-heading">
                   <h5 className="font-medium">
                      {`Question no: ${
@@ -156,8 +152,8 @@ export const QuizPage = () => {
                      </button>
                   )}
                </section>
-            </main>
+            </>
          )}
-      </>
+      </main>
    );
 };

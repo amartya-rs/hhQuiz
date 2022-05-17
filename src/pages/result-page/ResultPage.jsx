@@ -1,11 +1,9 @@
 import "./result-page.css";
 import { useData } from "../../context/data-context";
-import { Loader } from "../../utils/Loader";
 
 const ResultPage = () => {
    const {
       state: { quizData, currentCategory, userAnswer },
-      loading,
    } = useData();
 
    const questionID = quizData && Object.keys(quizData?.[currentCategory]);
@@ -41,44 +39,41 @@ const ResultPage = () => {
    };
 
    return (
-      <>
-         {loading ? (
-            <div className="loader-wrapper">
-               <Loader loading={loading} />
-            </div>
+      <main className="result-page">
+         {quizData === "" ? (
+            <div className="h2">Loading...</div>
          ) : (
-            <main className="result-page">
+            <>
                <section>
                   <h3 className="font-medium">{`Your total score is: ${
                      quizData && calculateScore()
                   }`}</h3>
                </section>
-               {questionID &&
-                  questionID?.map((ele, index) => (
-                     <section key={index} className="quiz-details">
-                        <h5>
-                           {`${ele.toUpperCase()}. ${
-                              quizData?.[currentCategory]?.[ele]?.text
-                           }`}
-                        </h5>
-                        <div className="quiz-options">
-                           {quizData?.[currentCategory]?.[ele]?.options.map(
-                              (ele, index) => (
-                                 <button
-                                    value={ele}
-                                    key={index}
-                                    className={`button ${resultOption(ele)}`}
-                                 >
-                                    {ele}
-                                 </button>
-                              )
-                           )}
-                        </div>
-                     </section>
-                  ))}
-            </main>
+               {questionID.map((ele, index) => (
+                  <section key={index} className="quiz-details">
+                     <h5>
+                        {`${ele.toUpperCase()}. ${
+                           quizData?.[currentCategory]?.[ele]?.text
+                        }`}
+                     </h5>
+                     <div className="quiz-options">
+                        {quizData?.[currentCategory]?.[ele]?.options.map(
+                           (ele, index) => (
+                              <button
+                                 value={ele}
+                                 key={index}
+                                 className={`button ${resultOption(ele)}`}
+                              >
+                                 {ele}
+                              </button>
+                           )
+                        )}
+                     </div>
+                  </section>
+               ))}
+            </>
          )}
-      </>
+      </main>
    );
 };
 
