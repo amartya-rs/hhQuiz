@@ -1,14 +1,10 @@
 import "./category-card.css";
 
-const CategoryCard = (props) => {
+const CategoryCard = ({ imgUrl, category, redirect }) => {
    return (
-      <div className="category-card" onClick={props.redirect}>
-         <img className="category-img" src={props.img} alt="category" />
-         <div className="description">
-            <h5>{props.category}</h5>
-            <p>Take this quiz to test yourself</p>
-            <p>5 Questions</p>
-         </div>
+      <div className="card vertical category" onClick={redirect}>
+         <img className="card-img" src={imgUrl} alt={category} />
+         <div className="overlay h4">{category}</div>
       </div>
    );
 };
