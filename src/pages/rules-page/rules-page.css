@@ -17,6 +17,14 @@
    height: 3rem;
 }
 
+.text-red {
+   color: var(--DANGER-COLOR);
+}
+
+.text-green {
+   color: var(--SUCCESS-COLOR);
+}
+
 /*media query*/
 @media screen and (max-width: 750px) {
    .rules-page h3 {
