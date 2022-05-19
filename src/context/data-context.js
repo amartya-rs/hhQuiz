@@ -1,13 +1,11 @@
 import { createContext, useContext, useReducer } from "react";
 import { getDatabase, ref, get } from "firebase/database";
 import { initializeApp } from "firebase/app";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
-   let [loading, setLoading] = useState(false);
-
    const firebaseConfig = {
       databaseURL:
          "https://hhquiz-4ef5c-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -28,7 +26,6 @@ const DataProvider = ({ children }) => {
    //fetching quiz data and categories from firebase realtime database
    useEffect(() => {
       const db = ref(getDatabase());
-      setLoading(true);
       get(db)
          .then((obj) => {
             if (obj.exists()) {
@@ -43,11 +40,16 @@ const DataProvider = ({ children }) => {
             }
          })
          .catch((error) => console.log(error))
-         .finally(() => setLoading(false));
+         .finally(() => dispatch({ type: "TOGGLE_LOADER", payload: false }));
    }, []);
 
    const dataReducer = (state, { type, payload }) => {
       switch (type) {
+         case "TOGGLE_LOADER":
+            return {
+               ...state,
+               isLoading: false,
+            };
          case "SET_QUIZ_DATA":
             return {
                ...state,
@@ -90,6 +92,7 @@ const DataProvider = ({ children }) => {
       currentQuestionId: 0,
       currentCategory: "",
       userAnswer: [],
+      isLoading: true,
    };
 
    const [state, dispatch] = useReducer(dataReducer, initialState);
@@ -98,7 +101,6 @@ const DataProvider = ({ children }) => {
       <DataContext.Provider
          value={{
             state,
-            loading,
             dispatch,
          }}
       >

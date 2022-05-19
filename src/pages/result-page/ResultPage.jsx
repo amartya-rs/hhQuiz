@@ -4,8 +4,7 @@ import { Loader } from "../../utils/Loader";
 
 const ResultPage = () => {
    const {
-      state: { quizData, currentCategory, userAnswer },
-      loading,
+      state: { quizData, currentCategory, userAnswer, isLoading },
    } = useData();
 
    const questionID = quizData && Object.keys(quizData?.[currentCategory].data);
@@ -42,9 +41,9 @@ const ResultPage = () => {
 
    return (
       <>
-         {loading ? (
+         {isLoading ? (
             <div className="loader-wrapper">
-               <Loader loading={loading} />
+               <Loader loading={isLoading} />
             </div>
          ) : (
             <main className="result-page">

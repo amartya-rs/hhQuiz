@@ -9,8 +9,7 @@ import "./home-page.css";
 const HomePage = () => {
    const navigate = useNavigate();
    const {
-      state: { quizCategories },
-      loading,
+      state: { quizCategories, isLoading },
       dispatch,
    } = useData();
 
@@ -22,9 +21,9 @@ const HomePage = () => {
 
    return (
       <main className="home-page">
-         {loading ? (
+         {isLoading ? (
             <div className="loader-wrapper">
-               <Loader loading={loading} />
+               <Loader loading={isLoading} />
             </div>
          ) : (
             <>

@@ -9,8 +9,7 @@ const CategoryQuizPage = () => {
    const { category } = useParams();
    const navigate = useNavigate();
    const {
-      state: { quizData },
-      loading,
+      state: { quizData, isLoading },
       dispatch,
    } = useData();
 
@@ -32,9 +31,9 @@ const CategoryQuizPage = () => {
 
    return (
       <>
-         {loading ? (
+         {isLoading ? (
             <div className="loader-wrapper">
-               <Loader loading={loading} />
+               <Loader loading={isLoading} />
             </div>
          ) : (
             <main className="all-quiz-page my-1">

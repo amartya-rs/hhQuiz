@@ -8,8 +8,13 @@ import "./quiz-page.css";
 
 export const QuizPage = () => {
    const {
-      state: { quizData, currentCategory, currentQuestionId, userAnswer },
-      loading,
+      state: {
+         quizData,
+         currentCategory,
+         currentQuestionId,
+         userAnswer,
+         isLoading,
+      },
       dispatch,
    } = useData();
    const navigate = useNavigate();
@@ -78,9 +83,9 @@ export const QuizPage = () => {
 
    return (
       <>
-         {loading ? (
+         {isLoading ? (
             <div className="loader-wrapper">
-               <Loader loading={loading} />
+               <Loader loading={isLoading} />
             </div>
          ) : (
             <main className="quiz-page">
