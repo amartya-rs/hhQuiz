@@ -11,6 +11,7 @@
 }
 
 .home-page .content-wrapper {
+   padding-left: 2rem;
    flex-basis: 100%;
 }
 
@@ -20,7 +21,7 @@
 }
 
 .home-page .content-wrapper .button {
-   margin-top: 4rem;
+   margin-top: 3.5rem;
 }
 
 .home-page .category-section {
@@ -59,5 +60,12 @@
 
    .home-page .content-wrapper {
       text-align: center;
+      padding: 0;
+   }
+}
+
+@media screen and (max-width: 850px) {
+   .home-page .content-wrapper h3 {
+      font-size: 2rem;
    }
 }
