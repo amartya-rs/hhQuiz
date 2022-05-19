@@ -24,7 +24,8 @@ export const QuizPage = () => {
       // eslint-disable-next-line
    }, []);
 
-   const questionID = quizData && Object.keys(quizData?.[currentCategory]);
+   const questionID =
+      quizData && Object.keys(quizData?.[currentCategory]?.data);
 
    const nextQuestion = () => {
       dispatch({
@@ -45,7 +46,9 @@ export const QuizPage = () => {
          userAnswer.find(
             (ele) =>
                ele.questionNo ===
-               quizData?.[currentCategory]?.[questionID[currentQuestionId]]?.qNo
+               quizData?.[currentCategory]?.data?.[
+                  questionID[currentQuestionId]
+               ]?.qNo
          )
       ) {
          userAnswer.splice(currentQuestionId, 1);
@@ -54,8 +57,9 @@ export const QuizPage = () => {
             payload: {
                answer: ele,
                questionNo:
-                  quizData?.[currentCategory]?.[questionID[currentQuestionId]]
-                     ?.qNo,
+                  quizData?.[currentCategory]?.data?.[
+                     questionID[currentQuestionId]
+                  ]?.qNo,
             },
          });
       } else {
@@ -64,8 +68,9 @@ export const QuizPage = () => {
             payload: {
                answer: ele,
                questionNo:
-                  quizData?.[currentCategory]?.[questionID[currentQuestionId]]
-                     ?.qNo,
+                  quizData?.[currentCategory]?.data?.[
+                     questionID[currentQuestionId]
+                  ]?.qNo,
             },
          });
       }
@@ -82,7 +87,7 @@ export const QuizPage = () => {
                <section className="quiz-heading">
                   <h5 className="font-medium">
                      {`Question no: ${
-                        quizData?.[currentCategory]?.[
+                        quizData?.[currentCategory]?.data?.[
                            questionID[currentQuestionId]
                         ]?.qNo
                      }/5`}
@@ -99,13 +104,13 @@ export const QuizPage = () => {
                <section className="quiz-details">
                   <h5>
                      {
-                        quizData?.[currentCategory]?.[
+                        quizData?.[currentCategory]?.data?.[
                            questionID[currentQuestionId]
                         ]?.text
                      }
                   </h5>
                   <div className="quiz-options">
-                     {quizData?.[currentCategory]?.[
+                     {quizData?.[currentCategory]?.data?.[
                         questionID[currentQuestionId]
                      ]?.options.map((ele, index) => (
                         <button
@@ -123,8 +128,9 @@ export const QuizPage = () => {
                   </div>
                </section>
                <section className="navigate-question">
-                  {quizData?.[currentCategory]?.[questionID[currentQuestionId]]
-                     ?.qNo === 1 ? (
+                  {quizData?.[currentCategory]?.data?.[
+                     questionID[currentQuestionId]
+                  ]?.qNo === 1 ? (
                      <button
                         onClick={() => navigate("/rules")}
                         className="button icon-only-button primary"
@@ -139,8 +145,9 @@ export const QuizPage = () => {
                         <LeftArrow />
                      </button>
                   )}
-                  {quizData?.[currentCategory]?.[questionID[currentQuestionId]]
-                     ?.qNo === 5 ? (
+                  {quizData?.[currentCategory]?.data?.[
+                     questionID[currentQuestionId]
+                  ]?.qNo === 5 ? (
                      <button
                         onClick={() => navigate("/result")}
                         className="button icon-only-button primary"
