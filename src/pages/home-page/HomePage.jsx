@@ -9,8 +9,7 @@ import "./home-page.css";
 const HomePage = () => {
    const navigate = useNavigate();
    const {
-      state: { quizCategories },
-      loading,
+      state: { quizCategories, isLoading },
       dispatch,
    } = useData();
 
@@ -20,17 +19,11 @@ const HomePage = () => {
       // eslint-disable-next-line
    }, []);
 
-   const redirect = (value) => {
-      dispatch({ type: "SET_CURRENT_CATEGORY", payload: value });
-      localStorage.setItem("currentCategory", value);
-      navigate("/rules");
-   };
-
    return (
-      <div className="home-page">
-         {loading ? (
+      <main className="home-page">
+         {isLoading ? (
             <div className="loader-wrapper">
-               <Loader loading={loading} />
+               <Loader loading={isLoading} />
             </div>
          ) : (
             <>
@@ -59,16 +52,18 @@ const HomePage = () => {
                         quizCategories.map((ele, index) => (
                            <CategoryCard
                               key={index}
-                              img={ele.url}
+                              imgUrl={ele.url}
                               category={ele.category}
-                              redirect={() => redirect(ele.category)}
+                              redirect={() =>
+                                 navigate(`/${ele.category.toLowerCase()}`)
+                              }
                            />
                         ))}
                   </div>
                </section>
             </>
          )}
-      </div>
+      </main>
    );
 };
 

@@ -1,0 +1,29 @@
+.quiz-card {
+   height: 23rem;
+   aspect-ratio: 1/1.25;
+   background-color: var(--PRIMARY-BG);
+   border-radius: 10px;
+   cursor: pointer;
+   overflow: hidden;
+
+   transition: all 0.25s ease-in-out;
+}
+
+.quiz-card:hover {
+   transform: scale(1.025);
+}
+
+.quiz-card .quiz-img {
+   object-fit: cover;
+   border-radius: 10px;
+   height: 75%;
+   width: 100%;
+}
+
+.quiz-card .description {
+   padding: 0 1rem;
+}
+
+.quiz-card .description {
+   text-align: center;
+}

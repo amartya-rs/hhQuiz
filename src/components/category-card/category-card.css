@@ -1,27 +1,24 @@
-.category-card {
-   height: 23rem;
-   aspect-ratio: 1/1.25;
-   background-color: var(--PRIMARY-BG);
-   border-radius: 10px;
+.home-page .category {
    cursor: pointer;
-   overflow: hidden;
+
+   transition: all 0.25s ease-in-out;
 }
 
-.category-card:hover {
-   transform: scale(1.025);
+.home-page .category .overlay {
+   top: 68%;
+   height: 24%;
 }
 
-.category-card .category-img {
+.home-page .vertical {
+   width: 20.5rem;
+   height: 18rem;
+}
+
+.home-page .vertical .card-img {
    object-fit: cover;
-   border-radius: 10px;
-   height: 75%;
-   width: 100%;
+   height: 100%;
 }
 
-.category-card .description {
-   padding: 0 1rem;
-}
-
-.category-card .description {
-   text-align: center;
+.home-page .category:hover {
+   transform: scale(1.025);
 }

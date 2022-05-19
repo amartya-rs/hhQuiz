@@ -4,11 +4,10 @@ import { Loader } from "../../utils/Loader";
 
 const ResultPage = () => {
    const {
-      state: { quizData, currentCategory, userAnswer },
-      loading,
+      state: { quizData, currentCategory, userAnswer, isLoading },
    } = useData();
 
-   const questionID = quizData && Object.keys(quizData?.[currentCategory]);
+   const questionID = quizData && Object.keys(quizData?.[currentCategory].data);
 
    const calculateScore = () => {
       let score = 0;
@@ -17,7 +16,7 @@ const ResultPage = () => {
             return userAnswer.find(
                (ans) =>
                   ans.answer ===
-                  quizData?.[currentCategory]?.[ele]?.correctAnswer
+                  quizData?.[currentCategory]?.data?.[ele]?.correctAnswer
             )
                ? (score += 2)
                : score--;
@@ -27,7 +26,7 @@ const ResultPage = () => {
 
    const resultOption = (val) => {
       const correctAnswers = questionID.map(
-         (ele) => quizData?.[currentCategory]?.[ele]?.correctAnswer
+         (ele) => quizData?.[currentCategory]?.data?.[ele]?.correctAnswer
       );
 
       if (correctAnswers.includes(val)) {
@@ -42,9 +41,9 @@ const ResultPage = () => {
 
    return (
       <>
-         {loading ? (
+         {isLoading ? (
             <div className="loader-wrapper">
-               <Loader loading={loading} />
+               <Loader loading={isLoading} />
             </div>
          ) : (
             <main className="result-page">
@@ -58,21 +57,21 @@ const ResultPage = () => {
                      <section key={index} className="quiz-details">
                         <h5>
                            {`${ele.toUpperCase()}. ${
-                              quizData?.[currentCategory]?.[ele]?.text
+                              quizData?.[currentCategory]?.data?.[ele]?.text
                            }`}
                         </h5>
                         <div className="quiz-options">
-                           {quizData?.[currentCategory]?.[ele]?.options.map(
-                              (ele, index) => (
-                                 <button
-                                    value={ele}
-                                    key={index}
-                                    className={`button ${resultOption(ele)}`}
-                                 >
-                                    {ele}
-                                 </button>
-                              )
-                           )}
+                           {quizData?.[currentCategory]?.data?.[
+                              ele
+                           ]?.options.map((ele, index) => (
+                              <button
+                                 value={ele}
+                                 key={index}
+                                 className={`button ${resultOption(ele)}`}
+                              >
+                                 {ele}
+                              </button>
+                           ))}
                         </div>
                      </section>
                   ))}

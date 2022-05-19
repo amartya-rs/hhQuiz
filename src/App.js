@@ -8,6 +8,7 @@ import {
    QuizPage,
    ResultPage,
    Page404,
+   CategoryQuizPage,
 } from "./pages/index";
 
 function App() {
@@ -18,8 +19,9 @@ function App() {
          <TopNav />
          <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/:category" element={<CategoryQuizPage />} />
             <Route path="/rules" element={<RulesPage />} />
-            <Route path="/quiz" element={<QuizPage />} />
+            <Route path="/:category/quiz" element={<QuizPage />} />
             <Route path="/result" element={<ResultPage />} />
             <Route path="*" element={<Page404 />} />
          </Routes>
