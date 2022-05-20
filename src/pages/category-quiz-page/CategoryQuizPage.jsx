@@ -13,15 +13,15 @@ const CategoryQuizPage = () => {
       dispatch,
    } = useData();
 
-   //filtering out the selected category quiz data from quizData
-   const quizToShow = [];
-   (() => {
+   const quizToShow = (quizData) => {
+      const filteredQuizData = [];
       for (const key in quizData) {
          if (quizData?.[key]?.category.toLowerCase() === category) {
-            quizToShow.push({ category: key, data: quizData?.[key] });
+            filteredQuizData.push({ category: key, data: quizData?.[key] });
          }
       }
-   })();
+      return filteredQuizData;
+   };
 
    const redirect = (value) => {
       dispatch({ type: "SET_CURRENT_CATEGORY", payload: value });
@@ -39,7 +39,7 @@ const CategoryQuizPage = () => {
             <main className="all-quiz-page my-1">
                <h5>{`${firstCharToCaps(category)} Quizzes`}</h5>
                <div className="category-wrapper mt-4">
-                  {quizToShow?.map(({ category, data }, index) => (
+                  {quizToShow(quizData)?.map(({ category, data }, index) => (
                      <QuizCard
                         key={index}
                         imgUrl={data.url}
