@@ -1,19 +1,11 @@
 import { createContext, useContext, useReducer } from "react";
-import { getDatabase, ref, get } from "firebase/database";
-import { initializeApp } from "firebase/app";
+import { get } from "firebase/database";
+import { db } from "../firebase-config";
 import { useEffect } from "react";
 
 const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
-   const firebaseConfig = {
-      databaseURL:
-         "https://hhquiz-4ef5c-default-rtdb.asia-southeast1.firebasedatabase.app",
-   };
-
-   // eslint-disable-next-line
-   const app = initializeApp(firebaseConfig);
-
    //getting the user selected category from the local storage on page refresh and setting it
    useEffect(() => {
       dispatch({
@@ -25,7 +17,6 @@ const DataProvider = ({ children }) => {
 
    //fetching quiz data and categories from firebase realtime database
    useEffect(() => {
-      const db = ref(getDatabase());
       get(db)
          .then((obj) => {
             if (obj.exists()) {
