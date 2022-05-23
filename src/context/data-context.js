@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer } from "react";
 import { get } from "firebase/database";
 import { db } from "../firebase-config";
+import { toastError } from "../utils/useToast";
 import { useEffect } from "react";
 
 const DataContext = createContext();
@@ -30,7 +31,7 @@ const DataProvider = ({ children }) => {
                });
             }
          })
-         .catch((error) => console.log(error))
+         .catch(() => toastError("Some error occured. Try refreshing"))
          .finally(() => dispatch({ type: "TOGGLE_LOADER", payload: false }));
    }, []);
 

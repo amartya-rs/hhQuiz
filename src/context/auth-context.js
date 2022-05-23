@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
 import { authReducer, initialState } from "../reducer/auth-reducer";
 import { useNavigate } from "react-router-dom";
+import { toastSuccess, toastError } from "../utils/useToast";
 import { auth } from "../firebase-config";
 import {
    createUserWithEmailAndPassword,
@@ -40,9 +41,10 @@ const AuthProvider = ({ children }) => {
             authState.password
          );
          authDispatch({ type: "CLEAR_FORM_INPUTS" });
+         toastSuccess("Logged in successfully");
          navigate("/");
       } catch (error) {
-         console.log(error);
+         toastError(error.message);
       } finally {
          setLoginLoader(false);
       }
@@ -51,8 +53,8 @@ const AuthProvider = ({ children }) => {
    //signup handler
    const signupHandler = async (e, setSignupLoader) => {
       e.preventDefault();
-      setSignupLoader(true);
       if (authState.password === authState.confirmPassword) {
+         setSignupLoader(true);
          try {
             await createUserWithEmailAndPassword(
                auth,
@@ -60,14 +62,15 @@ const AuthProvider = ({ children }) => {
                authState.password
             );
             authDispatch({ type: "CLEAR_FORM_INPUTS" });
+            toastSuccess("Signed up successfully");
             navigate("/");
          } catch (error) {
-            console.log(error);
+            toastError(error.message);
          } finally {
             setSignupLoader(false);
          }
       } else {
-         console.log("Passwords do not match");
+         toastError("Passwords do not match");
       }
    };
 
@@ -76,8 +79,9 @@ const AuthProvider = ({ children }) => {
       try {
          await signOut(auth);
          authDispatch({ type: "CLEAR_ALL" });
+         toastSuccess("Logged out successfully");
       } catch (error) {
-         console.log(error);
+         toastError(error.message);
       }
    };
 

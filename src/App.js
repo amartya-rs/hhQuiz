@@ -2,6 +2,8 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { useTheme } from "./context/theme-context";
 import { Footer, TopNav, RestrictedRoute, PrivateRoute } from "./components";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
    HomePage,
    RulesPage,
@@ -37,6 +39,8 @@ function App() {
             </Route>
          </Routes>
          <Footer />
+
+         <ToastContainer theme={theme === "dark" ? "dark" : "colored"} />
       </div>
    );
 }
