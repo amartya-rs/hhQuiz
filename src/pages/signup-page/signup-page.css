@@ -1,0 +1,23 @@
+.signup-page {
+   display: grid;
+   grid-template-columns: 1fr;
+}
+
+.signup-page .auth-form {
+   box-shadow: none;
+
+   align-self: center;
+   justify-self: center;
+   gap: 1rem;
+}
+
+@media screen and (max-width: 550px) {
+   .auth-form {
+      width: fit-content;
+      border: none;
+   }
+
+   .dark-mode-bg {
+      background-color: transparent;
+   }
+}
