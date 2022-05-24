@@ -8,7 +8,7 @@ hhQuiz
 
 hhQuiz is a quiz app themed around hiphop, built with ReactJS.
 
-Live link - [hhtube](https://hh-quiz.netlify.app/)
+Live link - [hhquiz](https://hh-quiz.netlify.app/)
 
 ## Preview
 
@@ -22,9 +22,13 @@ Live link - [hhtube](https://hh-quiz.netlify.app/)
 -  MCQ based quiz questions
 -  Result page with answers & total score
 -  Quit quiz
--  Loaders
+-  Loader and alert
 -  Dark mode
 -  Responsive site
+-  Authentication
+   -  Signup
+   -  Login
+   -  Logout
 
 ## Run the app locally
 
